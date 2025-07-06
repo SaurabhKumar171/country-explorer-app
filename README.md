@@ -34,8 +34,8 @@ This project is configured to run entirely within Docker containers. This is the
 
 1.  **Clone the repository:**
     ```bash
-    git clone <your-repository-url>
-    cd <your-project-directory>
+    git clone https://github.com/SaurabhKumar171/country-explorer-app.git
+    cd country-explorer-app
     ```
 
 2.  **Run the application with Docker Compose:**
