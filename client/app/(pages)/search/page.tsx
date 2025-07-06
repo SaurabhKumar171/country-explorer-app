@@ -5,11 +5,20 @@ import { getCountries } from "../../_services/countryService";
 import { useSearch } from "../../_context/SearchProvider";
 import { SearchHeader } from "../../_components/search/SearchHeader";
 import { ResultsDisplay } from "../../_components/search/ResultsDisplay";
+import { Spinner } from "@/app/_components/common/Spinner";
 
 function SearchContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const { setResults, setPagination, setIsLoading, setError } = useSearch();
+  // Destructure isLoading and error from the context to use them for rendering
+  const {
+    setResults,
+    setPagination,
+    setIsLoading,
+    setError,
+    isLoading, // <-- Get the loading state
+    error, // <-- Get the error state
+  } = useSearch();
 
   // Get search parameters directly from the URL
   const name = searchParams.get("name") || "";
@@ -62,8 +71,23 @@ function SearchContent() {
   return (
     <div className="bg-gray-900 text-white min-h-screen">
       <SearchHeader sortValue={sort} onSortChange={handleSortChange} />
+      {/* The main content area will now show a spinner or the results */}
       <main className="container mx-auto px-4 py-8 md:py-12">
-        <ResultsDisplay />
+        {/* We add a container with a minimum height to prevent layout shift */}
+        <div className="relative min-h-[60vh]">
+          {isLoading ? (
+            // If loading, show a centered spinner
+            <div className="absolute inset-0 flex items-center justify-center">
+              <Spinner />
+            </div>
+          ) : error ? (
+            // If there's an error, show the error message
+            <div className="text-center text-red-500">{error}</div>
+          ) : (
+            // Otherwise, show the results
+            <ResultsDisplay />
+          )}
+        </div>
       </main>
     </div>
   );
@@ -71,10 +95,11 @@ function SearchContent() {
 
 export default function SearchPage() {
   return (
+    // The Suspense fallback is great for the initial component load
     <Suspense
       fallback={
         <div className="bg-gray-900 min-h-screen flex items-center justify-center">
-          <p className="text-white text-lg">Loading Search Results...</p>
+          <Spinner />
         </div>
       }
     >
