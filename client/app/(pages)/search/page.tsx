@@ -71,9 +71,9 @@ function SearchContent() {
   return (
     <div className="bg-gray-900 text-white min-h-screen">
       <SearchHeader sortValue={sort} onSortChange={handleSortChange} />
-      {/* The main content area will now show a spinner or the results */}
+      {/* The main content area will show a spinner or the results */}
       <main className="container mx-auto px-4 py-8 md:py-12">
-        {/* We add a container with a minimum height to prevent layout shift */}
+        {/* Add a container with a minimum height to prevent layout shift */}
         <div className="relative min-h-[60vh]">
           {isLoading ? (
             // If loading, show a centered spinner
@@ -95,7 +95,6 @@ function SearchContent() {
 
 export default function SearchPage() {
   return (
-    // The Suspense fallback is great for the initial component load
     <Suspense
       fallback={
         <div className="bg-gray-900 min-h-screen flex items-center justify-center">

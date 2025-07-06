@@ -18,7 +18,7 @@ export const SearchHeader: React.FC<SearchHeaderProps> = ({
   return (
     <header className="bg-gray-900/70 backdrop-blur-lg shadow-lg sticky top-0 z-20 border-b border-white/10">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between gap-4 h-20">
+        <div className="flex items-center justify-between gap-4 min-h-20 py-4 md:py-0">
           {/* Left Side: Logo/Brand */}
           <div className="hidden md:flex">
             <Link
