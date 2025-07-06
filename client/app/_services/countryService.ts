@@ -2,8 +2,8 @@ import { Country, CountryDetails, ApiResponse } from "../_types/country";
 
 // --- API Service ---
 
-// const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://country-explorer-app.onrender.com/api/v1';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1';
+// const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://country-explorer-app.onrender.com/api/v1';
 
 
 /**
